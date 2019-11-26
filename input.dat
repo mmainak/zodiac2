@@ -1,0 +1,79 @@
+C A data file for diablo.  This is a generic, easy method of data
+C input, as long as you don't change the number of comment lines.
+C Note that the grid size is defined in the file grid_def.
+C VERSION
+    0.9
+C USE_MPI (note, also change flag in Makefile):
+    .TRUE.               
+C Parameters:       NU,          LX,      LY,       LZ
+                0.0000018         0.05      2.0        6.0   
+C Time March:  N_TIME_STEPS, DELTA_T, RESET_TIME, VARIABLE_DT, CFL,  DFNX, UPDATE_DT
+                   1000       0.006    .FALSE.     .TRUE.    0.55   0.55      1
+C Method:     NUM_PER_DIR, TIME_AD_METH,  LES,   LES_MODEL_TYPE LES_MODEL_TYPE_TH
+                 1             2        .FALSE.        2              1
+C I/O:         VERBOSITY, SAVE_FLOW_INT, SAVE_STATS_INT,  MOVIE
+                 2            10            2          .FALSE.
+C ICs:          CREATE_NEW_FLOW, IC_TYPE, KICK     INITIAL_TREATMENT
+                  .TRUE.          7     0.0003         .FALSE.
+C Forcing:      F_TYPE,    UBULK0,    PX0,    OMEGA0,   AMP_OMEGA0,  BETA,  F_0
+                   0        0.0        0    0.00014075      1.0      80.0     0.0
+C BCs: U_BC_LOWER, U_BC_LOWER_C1, U_BC_LOWER_C2, U_BC_LOWER_C3
+           0           0.0             0.0           0.0  
+C BCs: V_BC_LOWER, V_BC_LOWER_C1, V_BC_LOWER_C2, V_BC_LOWER_C3
+           0           0.0             0.0           0.0  
+C BCs: W_BC_LOWER, W_BC_LOWER_C1, W_BC_LOWER_C2, W_BC_LOWER_C3
+           0           0.0             0.0           0.0  
+C BCs: U_BC_UPPER, U_BC_UPPER_C1, U_BC_UPPER_C2, U_BC_UPPER_C3
+           1           0.0             0.0           0.0  
+C BCs: V_BC_UPPER, V_BC_UPPER_C1, V_BC_UPPER_C2, V_BC_UPPER_C3
+           0           0.0             0.0           0.0  
+C BCs: W_BC_UPPER, W_BC_UPPER_C1, W_BC_UPPER_C2, W_BC_UPPER_C3
+           1           0.0             0.0           0.0  
+C BCs: U_BC_LEFT, U_BC_LEFT_C1, U_BC_LEFT_C2, U_BC_LEFT_C3
+           0           0.0             0.0           0.0
+C BCs: V_BC_LEFT, V_BC_LEFT_C1, V_BC_LEFT_C2, V_BC_LEFT_C3
+           0           0.0             0.0           0.0
+C BCs: W_BC_LEFT, W_BC_LEFT_C1, W_BC_LEFT_C2, W_BC_LEFT_C3
+           0           1.0             0.0           0.0
+C BCs: U_BC_RIGHT, U_BC_RIGHT_C1, U_BC_RIGHT_C2, U_BC_RIGHT_C3
+           0           0.0             0.0           0.0
+C BCs: V_BC_RIGHT, V_BC_RIGHT_C1, V_BC_RIGHT_C2, V_BC_RIGHT_C3
+           0           0.0             0.0           0.0
+C BCs: W_BC_RIGHT, W_BC_RIGHT_C1, W_BC_RIGHT_C2, W_BC_RIGHT_C3
+           1           0.0             0.0           0.0
+C STOCHASTIC FORCING
+         .FALSE.
+C Filter the velocity field?  How often? (in timesteps) Filter_type
+              .FALSE.             8                          3
+C Here include 10*N_TH lines, see below for format
+C         CREATE_FLOW_TH(1)  Create new field or Read from DIABLO_TH.START
+               .TRUE.
+C         FILTER_TH(1)         FILTER_INT(1)     (If and how often to filter)
+             .FALSE.                10
+C         RI_TAU(1)      PR(1)       BACKGROUND_TH(N)     CONSTANT_STRATIFICATION
+            4.0          14.0          .FALSE.                  .TRUE.
+C BCs: TH_BC_LOWER(1), TH_BC_LOWER_C1(1), TH_BC_LOWER_C2(1), TH_BC_LOWER_C3(1)
+           1              0.0                 0.0              0.0
+C BCs: TH_BC_UPPER(1), TH_BC_UPPER_C1(1), TH_BC_UPPER_C2(1), TH_BC_UPPER_C3(1)
+           0              0.0                 0.0              0.0
+C BCs: TH_BC_LEFT(1), TH_BC_LEFT_C1(1), TH_BC_LEFT_C2(1), TH_BC_LEFT_C3(1)
+           0              1.0                 0.0              0.0
+C BCs: TH_BC_RIGHT(1), TH_BC_RIGHT_C1(1), TH_BC_RIGHT_C2(1), TH_BC_RIGHT_C3(1)
+           0              0.0                 0.0              0.0
+C         CREATE_FLOW_TH(2)  Create new field or Read from DIABLO_TH.START
+               .TRUE.
+C         FILTER_TH(2)         FILTER_INT(2)     (If and how often to filter)
+             .FALSE.                10
+C         RI_TAU(2)      PR(2)       BACKGROUND_TH(N)     CONSTANT_STRATIFICATION
+            4.0          100.0          .FALSE.                  .TRUE.
+C BCs: TH_BC_LOWER(2), TH_BC_LOWER_C1(2), TH_BC_LOWER_C2(2), TH_BC_LOWER_C3(2)
+           0              0.0                 0.0              0.0
+C BCs: TH_BC_UPPER(2), TH_BC_UPPER_C1(2), TH_BC_UPPER_C2(2), TH_BC_UPPER_C3(2)
+           1              0.0                 0.0              0.0
+C BCs: TH_BC_LEFT(2), TH_BC_LEFT_C1(2), TH_BC_LEFT_C2(2), TH_BC_LEFT_C3(2)
+           1              1.0                 0.0              0.0
+C BCs: TH_BC_RIGHT(2), TH_BC_RIGHT_C1(2), TH_BC_RIGHT_C2(2), TH_BC_RIGHT_C3(2)
+           0              0.0                 0.0              0.0
+C NonLinear_Eqn_State
+        .FALSE.
+

@@ -1,0 +1,31 @@
+!----*|--.---------.---------.---------.---------.---------.---------.-|-------|
+! grid_def, the portion of the header that defines the grid size for diablo.
+!----*|--.---------.---------.---------.---------.---------.---------.-|-------|
+      
+
+
+      PARAMETER (NX=64)
+      PARAMETER (NY=1153-2)
+      PARAMETER (NZ=257-2)
+      PARAMETER (N_TH=2)
+  
+!*___*|---------------------------------------------
+      PARAMETER (NKX=NX/3)
+!____*|--.---------.---------. MULTIGRID PARAMETERS :
+        INTEGER NYC, NZC, LEVELS, NM
+	PARAMETER (NYC=10)
+	PARAMETER (NZC=3)
+	PARAMETER (NM=99702)
+	PARAMETER (LEVELS=8)
+!----*|--.---------.---------.---------.---------.---------.---------.-|-------|
+!-------------MPI PARAMETERS :     
+      PARAMETER (NP = 16)
+      PARAMETER (NZV=ceiling(real(NZ+2)/real(NP))*NP)
+      PARAMETER (NXV=ceiling(real(NX+2)/real(NP))*NP)
+      PARAMETER (NXP=NXV/NP-1)
+      PARAMETER (NZP=NZV/NP-1)      
+      PARAMETER (NKXV=ceiling(real(NKX+1)/real(NP))*NP) 
+      PARAMETER (NKXP=NKXV/NP-1)
+      PARAMETER (NX2V=ceiling(real(NXV/2)/real(NP))*NP)
+      PARAMETER (NX2P=NX2V/NP-1)    
+!      PARAMETER (NXP_L=NX-(NXP+1)*(NP-1)-1)
